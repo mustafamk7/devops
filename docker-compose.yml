@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "8080:3000"
+    depends_on:
+      - db
+    volumes:
+      - .:/usr/src/app  
+      - /usr/src/app/node_modules
+   
+  db:
+    image: 'postgres'
+    ports:
+      - '5444:5432' 
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'root'
+      POSTGRES_DB: 'mustafa'
